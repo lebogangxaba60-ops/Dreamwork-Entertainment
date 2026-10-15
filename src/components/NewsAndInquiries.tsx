@@ -105,6 +105,11 @@ export const NewsAndInquiries: React.FC<NewsAndInquiriesProps> = ({
                     src={article.image}
                     alt={article.title}
                     referrerPolicy="no-referrer"
+                    onError={(e) => {
+                      if (article.fallbackImage && e.currentTarget.src !== article.fallbackImage && !e.currentTarget.src.endsWith(article.fallbackImage)) {
+                        e.currentTarget.src = article.fallbackImage;
+                      }
+                    }}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                   />
                   <div className="absolute top-3 left-3">

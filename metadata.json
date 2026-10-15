@@ -2,5 +2,7 @@
   "name": "Dreamwork Entertainment SA",
   "description": "South Africa's premier record label landing page for Dreamwork Entertainment SA, exclusively dedicated to SA Hip-Hop and SA R&B.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }

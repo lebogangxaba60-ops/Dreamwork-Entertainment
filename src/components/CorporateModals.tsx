@@ -766,6 +766,11 @@ export const ArtistDetailModal: React.FC<ArtistDetailModalProps> = ({
             src={artist.image}
             alt={artist.name}
             referrerPolicy="no-referrer"
+            onError={(e) => {
+              if (artist.fallbackImage && e.currentTarget.src !== artist.fallbackImage && !e.currentTarget.src.endsWith(artist.fallbackImage)) {
+                e.currentTarget.src = artist.fallbackImage;
+              }
+            }}
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0F0F13] via-[#0F0F13]/40 to-black/30" />
@@ -859,6 +864,11 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({ article, onClose }) 
             src={article.image}
             alt={article.title}
             referrerPolicy="no-referrer"
+            onError={(e) => {
+              if (article.fallbackImage && e.currentTarget.src !== article.fallbackImage && !e.currentTarget.src.endsWith(article.fallbackImage)) {
+                e.currentTarget.src = article.fallbackImage;
+              }
+            }}
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0F0F13] via-black/40 to-transparent" />

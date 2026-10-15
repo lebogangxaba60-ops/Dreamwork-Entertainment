@@ -39,8 +39,13 @@ export const FeaturedVideos: React.FC<FeaturedVideosProps> = ({ onPlayVideo, onP
     }
   };
 
-  const handleImageError = (id: string) => {
-    setImageErrors((prev) => ({ ...prev, [id]: true }));
+  const handleImageError = (id: string, fallback: string, e: React.SyntheticEvent<HTMLImageElement>) => {
+    const target = e.currentTarget;
+    if (fallback && target.src !== fallback && !target.src.endsWith(fallback)) {
+      target.src = fallback;
+    } else {
+      setImageErrors((prev) => ({ ...prev, [id]: true }));
+    }
   };
 
   const handleAudioPreview = (e: React.MouseEvent, video: FeaturedVideo) => {
@@ -130,7 +135,7 @@ export const FeaturedVideos: React.FC<FeaturedVideosProps> = ({ onPlayVideo, onP
                     <img
                       src={video.thumbnail}
                       alt={`${video.title} by ${video.artist}`}
-                      onError={() => handleImageError(video.id)}
+                      onError={(e) => handleImageError(video.id, video.fallbackThumbnail, e)}
                       referrerPolicy="no-referrer"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                     />

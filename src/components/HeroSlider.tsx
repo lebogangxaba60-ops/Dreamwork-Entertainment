@@ -50,8 +50,13 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
 
   const activeArtist = HERO_ARTISTS[currentIndex];
 
-  const handleImageError = (id: string) => {
-    setImageErrors((prev) => ({ ...prev, [id]: true }));
+  const handleImageError = (id: string, fallback: string, e: React.SyntheticEvent<HTMLImageElement>) => {
+    const target = e.currentTarget;
+    if (fallback && target.src !== fallback && !target.src.endsWith(fallback)) {
+      target.src = fallback;
+    } else {
+      setImageErrors((prev) => ({ ...prev, [id]: true }));
+    }
   };
 
   // Touch handlers for mobile swipe responsiveness
@@ -117,7 +122,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
                 <img
                   src={artist.image}
                   alt={artist.name}
-                  onError={() => handleImageError(artist.id)}
+                  onError={(e) => handleImageError(artist.id, artist.fallbackImage, e)}
                   referrerPolicy="no-referrer"
                   className={`w-full h-full object-cover object-center lg:object-top transition-transform duration-7000 ease-out ${
                     isActive ? 'scale-105' : 'scale-100'

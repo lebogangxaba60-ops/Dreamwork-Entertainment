@@ -1,3 +1,10 @@
+import jhbSkylineImg from '../assets/images/johannesburg_skyline_night_1792097802132.jpg';
+import vinylTurntableImg from '../assets/images/vinyl_turntable_luxury_1792097800883.jpg';
+import studioConsoleImg from '../assets/images/studio_console_rosebank_1792097800262.jpg';
+import goldDiscImg from '../assets/images/gold_disc_award_1792097802750.jpg';
+import studioMicImg from '../assets/images/studio_mic_luxury_1792099428804.jpg';
+import mpcSamplerImg from '../assets/images/mpc_sampler_rosebank_1792099429412.jpg';
+
 export interface HeroArtist {
   id: string;
   name: string;
@@ -7,6 +14,7 @@ export interface HeroArtist {
   latestRelease: string;
   releaseType: string;
   image: string;
+  fallbackImage: string;
   streams: string;
   subLabel: string;
   bioHighlight: string;
@@ -32,6 +40,7 @@ export interface FeaturedVideo {
   releaseDate: string;
   director: string;
   thumbnail: string;
+  fallbackThumbnail: string;
   vevoVerified: boolean;
   genre: 'SA Hip-Hop' | 'SA R&B' | 'SA Trap-Soul';
   description: string;
@@ -46,6 +55,7 @@ export interface NewsArticle {
   readTime: string;
   excerpt: string;
   image: string;
+  fallbackImage: string;
   featured?: boolean;
 }
 
@@ -75,7 +85,8 @@ export const HERO_ARTISTS: HeroArtist[] = [
     genre: 'SA Hip-Hop · Sotho Drill · Trap',
     latestRelease: 'Sunrise Over Ponte (Platinum Edition)',
     releaseType: 'SAHHA Album of the Year & RiSA 3x Platinum',
-    image: '/src/assets/images/johannesburg_skyline_night_1792097802132.jpg',
+    image: jhbSkylineImg,
+    fallbackImage: '/images/johannesburg_skyline_night.jpg',
     streams: '380M Streams',
     subLabel: 'Jozi Streets Records',
     bioHighlight: 'Johannesburg lyrical heavyweight celebrated for uniting multilingual Sesotho, Zulu, and English bars with cinematic orchestral trap production and stadium-filling tours.',
@@ -89,7 +100,8 @@ export const HERO_ARTISTS: HeroArtist[] = [
     genre: 'Contemporary SA R&B · Neo-Soul',
     latestRelease: 'Midnight in Rosebank (Deluxe EP)',
     releaseType: 'Metro FM Best R&B Release & RiSA 2x Platinum',
-    image: '/src/assets/images/vinyl_turntable_luxury_1792097800883.jpg',
+    image: vinylTurntableImg,
+    fallbackImage: '/images/vinyl_turntable_luxury.jpg',
     streams: '290M Streams',
     subLabel: 'Aura R&B South Africa',
     bioHighlight: 'Multi-award-winning R&B songstress hailed as the voice of modern Mzansi romance, bridging 90s soul sensibilities with contemporary South African rhythmic textures.',
@@ -103,7 +115,8 @@ export const HERO_ARTISTS: HeroArtist[] = [
     genre: 'SA Hip-Hop · Hardcore Trap · Conscious Rap',
     latestRelease: 'From Braam to the Hills (LP)',
     releaseType: 'South African Hip Hop Awards Best Lyricist',
-    image: '/src/assets/images/studio_console_rosebank_1792097800262.jpg',
+    image: studioConsoleImg,
+    fallbackImage: '/images/studio_console_rosebank.jpg',
     streams: '210M Streams',
     subLabel: 'Braamfontein Sound Co.',
     bioHighlight: 'Critically acclaimed producer and rapper known for razor-sharp social commentary, vintage vinyl chops, and collaborations with the continent’s leading rhymers.',
@@ -117,7 +130,8 @@ export const HERO_ARTISTS: HeroArtist[] = [
     genre: 'Alternative SA R&B · Trap-Soul',
     latestRelease: 'Camps Bay Sunset (Acoustic & Master Stems)',
     releaseType: 'SAMA Best R&B / Soul Album Nominee',
-    image: '/src/assets/images/gold_disc_award_1792097802750.jpg',
+    image: goldDiscImg,
+    fallbackImage: '/images/gold_disc_award.jpg',
     streams: '175M Streams',
     subLabel: 'Velvet Coast Imprint',
     bioHighlight: 'Pioneering South Africa’s downtempo trap-soul soundscape with acoustic guitar licks, sub-bass grooves, and internationally syndicated film sync features.',
@@ -193,7 +207,8 @@ export const FEATURED_VIDEOS: FeaturedVideo[] = [
     views: '41.2M',
     releaseDate: '3 days ago',
     director: 'Tebogo Malope',
-    thumbnail: '/src/assets/images/johannesburg_skyline_night_1792097802132.jpg',
+    thumbnail: jhbSkylineImg,
+    fallbackThumbnail: '/images/johannesburg_skyline_night.jpg',
     vevoVerified: true,
     genre: 'SA Hip-Hop',
     description: 'High-concept visual shot on a Johannesburg rooftop with panoramic views of Ponte City Tower and Hillbrow, celebrating authentic SA Hip-Hop poetry.',
@@ -207,7 +222,8 @@ export const FEATURED_VIDEOS: FeaturedVideo[] = [
     views: '35.6M',
     releaseDate: '1 week ago',
     director: 'Ofentse Mwase',
-    thumbnail: '/src/assets/images/vinyl_turntable_luxury_1792097800883.jpg',
+    thumbnail: vinylTurntableImg,
+    fallbackThumbnail: '/images/vinyl_turntable_luxury.jpg',
     vevoVerified: true,
     genre: 'SA R&B',
     description: 'A lavish neo-soul visual filmed across Rosebank’s luxury hotel suites and late-night vinyl lounges, capturing deep contemporary Mzansi romance.',
@@ -221,10 +237,11 @@ export const FEATURED_VIDEOS: FeaturedVideo[] = [
     views: '26.4M',
     releaseDate: '2 weeks ago',
     director: 'Kyle Lewis',
-    thumbnail: '/src/assets/images/studio_console_rosebank_1792097800262.jpg',
+    thumbnail: mpcSamplerImg,
+    fallbackThumbnail: '/images/mpc_sampler_rosebank.jpg',
     vevoVerified: true,
     genre: 'SA Hip-Hop',
-    description: 'Gritty 16mm street video filmed on Juta Street and the Nelson Mandela Bridge, showcasing rapid-fire vernacular punchlines and vintage MPC boom-bap.',
+    description: 'Gritty street visual filmed on Juta Street and the Nelson Mandela Bridge, showcasing vintage MPC beat production and rapid-fire vernacular punchlines.',
     youtubeId: 'VEVO-SA-082',
   },
   {
@@ -235,10 +252,11 @@ export const FEATURED_VIDEOS: FeaturedVideo[] = [
     views: '19.7M',
     releaseDate: '1 month ago',
     director: 'Sunu Gonera',
-    thumbnail: '/src/assets/images/gold_disc_award_1792097802750.jpg',
+    thumbnail: studioMicImg,
+    fallbackThumbnail: '/images/studio_mic_luxury.jpg',
     vevoVerified: true,
     genre: 'SA Trap-Soul',
-    description: 'Intimate visual poetry captured along the Atlantic Seaboard at dusk, blending 808 sub-harmonics with soulful electric piano chords.',
+    description: 'Intimate visual poetry captured inside high-end vocal tracking booths, blending 808 sub-harmonics with soulful acoustic runs.',
     youtubeId: 'VEVO-SA-204',
   },
 ];
@@ -251,7 +269,8 @@ export const NEWS_ARTICLES: NewsArticle[] = [
     date: 'October 14, 2026',
     readTime: '4 min read',
     excerpt: 'Lyrical titan sweeps Best Male, Lyricist of the Year, and Album of the Year for the critically acclaimed Sunrise Over Ponte release.',
-    image: '/src/assets/images/johannesburg_skyline_night_1792097802132.jpg',
+    image: goldDiscImg,
+    fallbackImage: '/images/gold_disc_award.jpg',
     featured: true,
   },
   {
@@ -261,7 +280,8 @@ export const NEWS_ARTICLES: NewsArticle[] = [
     date: 'October 10, 2026',
     readTime: '3 min read',
     excerpt: 'Recording Industry of South Africa (RiSA) certifies Midnight in Rosebank multi-platinum, proving the unstoppable resurgence of homegrown soul.',
-    image: '/src/assets/images/gold_disc_award_1792097802750.jpg',
+    image: vinylTurntableImg,
+    fallbackImage: '/images/vinyl_turntable_luxury.jpg',
   },
   {
     id: 'news-3',
@@ -270,7 +290,8 @@ export const NEWS_ARTICLES: NewsArticle[] = [
     date: 'September 28, 2026',
     readTime: '3 min read',
     excerpt: 'State-of-the-art facility features vintage Neve consoles, tape saturation racks, and SSL vocal booths custom-tuned for rap verses and R&B runs.',
-    image: '/src/assets/images/studio_console_rosebank_1792097800262.jpg',
+    image: studioConsoleImg,
+    fallbackImage: '/images/studio_console_rosebank.jpg',
   },
   {
     id: 'news-4',
@@ -279,7 +300,8 @@ export const NEWS_ARTICLES: NewsArticle[] = [
     date: 'September 19, 2026',
     readTime: '5 min read',
     excerpt: 'Billboard and OkayAfrica spotlight how South African R&B artists are charting across London, Atlanta, and Paris with authentic local dialect melodies.',
-    image: '/src/assets/images/vinyl_turntable_luxury_1792097800883.jpg',
+    image: studioMicImg,
+    fallbackImage: '/images/studio_mic_luxury.jpg',
   },
 ];
 

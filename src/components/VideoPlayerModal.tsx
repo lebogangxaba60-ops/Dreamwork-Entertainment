@@ -118,6 +118,11 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({ video, onClo
             src={video.thumbnail}
             alt={video.title}
             referrerPolicy="no-referrer"
+            onError={(e) => {
+              if (video.fallbackThumbnail && e.currentTarget.src !== video.fallbackThumbnail && !e.currentTarget.src.endsWith(video.fallbackThumbnail)) {
+                e.currentTarget.src = video.fallbackThumbnail;
+              }
+            }}
             className="w-full h-full object-cover"
           />
 

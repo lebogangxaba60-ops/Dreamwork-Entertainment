@@ -89,6 +89,9 @@ export const AudioPlayerBar: React.FC<AudioPlayerBarProps> = ({ currentTrack, on
             <img
               src={currentTrack.thumbnail}
               alt={currentTrack.title}
+              onError={(e) => {
+                e.currentTarget.src = '/images/vinyl_turntable_luxury.jpg';
+              }}
               className="w-full h-full object-cover"
             />
             {isPlaying && (
